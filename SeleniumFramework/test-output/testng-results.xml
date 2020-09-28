@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="2242" started-at="2020-09-28T07:22:21Z" finished-at="2020-09-28T07:22:24Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="2242" started-at="2020-09-28T07:22:21Z" finished-at="2020-09-28T07:22:24Z">
+      <class name="com.java.tests.ProfilePageTests">
+        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="oneTimeSetUp" is-config="true" duration-ms="14918" started-at="2020-09-28T12:52:06Z" description="Logging the application" finished-at="2020-09-28T12:52:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- oneTimeSetUp -->
+        <test-method status="PASS" signature="testResume()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="testResume" duration-ms="2234" started-at="2020-09-28T12:52:21Z" description="Click on Resume Button Test" finished-at="2020-09-28T12:52:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testResume -->
+        <test-method status="PASS" signature="tearUp()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="tearUp" is-config="true" duration-ms="1349" started-at="2020-09-28T12:52:24Z" description="Logout and tearUp" finished-at="2020-09-28T12:52:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+      </class> <!-- com.java.tests.ProfilePageTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
