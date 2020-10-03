@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SeleniumTests]">
+  <test name="Selenium Test Scenarios(failed)">
+    <classes>
+      <class name="com.java.tests.ProfilePageTests">
+        <methods>
+          <include name="oneTimeSetUp"/>
+          <include name="tearUp"/>
+        </methods>
+      </class> <!-- com.java.tests.ProfilePageTests -->
+      <class name="com.java.tests.GPSLocationTest">
+        <methods>
+          <include name="geoLocationTest"/>
+        </methods>
+      </class> <!-- com.java.tests.GPSLocationTest -->
+    </classes>
+  </test> <!-- Selenium Test Scenarios(failed) -->
+</suite> <!-- Failed suite [SeleniumTests] -->

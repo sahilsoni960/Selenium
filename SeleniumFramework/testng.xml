@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SeleniumTests" verbose="1">
+
+	<test name="Selenium Test Scenarios">
+		<classes>
+			<class name="com.java.tests.GPSLocationTest" />
+			<class name="com.java.tests.ProfilePageTests" />
+			<class name="com.java.tests.SeleniumEasyDemoTests" />
+		</classes>
+	</test>
+</suite>

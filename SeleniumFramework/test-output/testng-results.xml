@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2148" started-at="2020-09-28T08:09:30Z" finished-at="2020-09-28T08:09:32Z">
+  <suite name="SeleniumTests" duration-ms="52967" started-at="2020-10-03T16:57:10Z" finished-at="2020-10-03T16:58:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2148" started-at="2020-09-28T08:09:30Z" finished-at="2020-09-28T08:09:32Z">
+    <test name="Selenium Test Scenarios" duration-ms="52967" started-at="2020-10-03T16:57:10Z" finished-at="2020-10-03T16:58:03Z">
+      <class name="com.java.tests.SeleniumEasyDemoTests">
+        <test-method status="PASS" signature="testFileDownload()[pri:0, instance:com.java.tests.SeleniumEasyDemoTests@23e028a9]" name="testFileDownload" duration-ms="17236" started-at="2020-10-03T22:27:46Z" description="File Downlaod Test" finished-at="2020-10-03T22:28:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testFileDownload -->
+      </class> <!-- com.java.tests.SeleniumEasyDemoTests -->
       <class name="com.java.tests.ProfilePageTests">
-        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="oneTimeSetUp" is-config="true" duration-ms="11497" started-at="2020-09-28T13:39:19Z" description="Logging the application" finished-at="2020-09-28T13:39:30Z">
+        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:com.java.tests.ProfilePageTests@5a8e6209]" name="oneTimeSetUp" is-config="true" duration-ms="7287" started-at="2020-10-03T22:27:03Z" description="Logging the application" finished-at="2020-10-03T22:27:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- oneTimeSetUp -->
-        <test-method status="PASS" signature="testResume()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="testResume" duration-ms="2139" started-at="2020-09-28T13:39:30Z" description="Click on Resume Button Test" finished-at="2020-09-28T13:39:32Z">
+        <test-method status="PASS" signature="testResume()[pri:0, instance:com.java.tests.ProfilePageTests@5a8e6209]" name="testResume" duration-ms="8729" started-at="2020-10-03T22:27:37Z" description="Click on Resume Button Test" finished-at="2020-10-03T22:27:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testResume -->
-        <test-method status="PASS" signature="tearUp()[pri:0, instance:com.java.tests.ProfilePageTests@6e1567f1]" name="tearUp" is-config="true" duration-ms="1401" started-at="2020-09-28T13:39:32Z" description="Logout and tearUp" finished-at="2020-09-28T13:39:34Z">
+        <test-method status="PASS" signature="tearUp()[pri:0, instance:com.java.tests.ProfilePageTests@5a8e6209]" name="tearUp" is-config="true" duration-ms="3181" started-at="2020-10-03T22:28:03Z" description="Logout and tearUp" finished-at="2020-10-03T22:28:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
       </class> <!-- com.java.tests.ProfilePageTests -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      <class name="com.java.tests.GPSLocationTest">
+        <test-method status="PASS" signature="geoLocationTest()[pri:0, instance:com.java.tests.GPSLocationTest@47ef968d]" name="geoLocationTest" duration-ms="26949" started-at="2020-10-03T22:27:10Z" description="Geo Location Test" finished-at="2020-10-03T22:27:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- geoLocationTest -->
+      </class> <!-- com.java.tests.GPSLocationTest -->
+    </test> <!-- Selenium Test Scenarios -->
+  </suite> <!-- SeleniumTests -->
 </testng-results>

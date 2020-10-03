@@ -18,7 +18,7 @@ public class MyProfilePageActions {
 	public void clickOnResumeButton(WebDriver driver, ExtentTest logger) throws Exception {
 		gm.waitForMilliSec(1000);
 		gm.waitForElementExistence(driver, MyProfilePageObjects.resumeButton, "Resume Button", logger);
-		gm.clickElement(driver, logger, MyProfilePageObjects.resumeButton, "Clickk on Resume Button");
+		gm.clickElement(driver, logger, MyProfilePageObjects.resumeButton, "Resume Button");
 	}
 
 }

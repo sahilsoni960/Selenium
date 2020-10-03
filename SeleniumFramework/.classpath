@@ -11,5 +11,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Sahil/Automation/SeleniumFramework/lib/ATUTestRecorder_2.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

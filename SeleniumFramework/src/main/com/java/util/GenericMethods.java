@@ -5,10 +5,15 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import org.testng.Assert;
+import org.openqa.selenium.Keys;
+import org.apache.commons.io.FileUtils;
 import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
@@ -17,12 +22,16 @@ import org.openqa.selenium.JavascriptExecutor;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.StaleElementReferenceException;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 /***
  *
@@ -47,9 +56,33 @@ public class GenericMethods {
 	public WebDriver openBrowser(String browserName) {
 		WebDriver driver = null;
 		if (browserName.equalsIgnoreCase("Chrome")) {
-
+			folder = new File(UUID.randomUUID().toString());
+			folder.mkdir();
 			System.setProperty("webdriver.chrome.driver", projectDir + "/BrowserDrivers/chromedriver.exe");
-			driver = new ChromeDriver();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("profile.default_content_setting_values.geolocation", 1);
+			prefs.put("download.default_directory", folder.getAbsolutePath());
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", prefs);
+			options.setAcceptInsecureCerts(true);
+			driver = new ChromeDriver(options);
+			driver.manage().window().maximize();
+
+		} else if (browserName.equalsIgnoreCase("Firefox")) {
+			folder = new File(UUID.randomUUID().toString());
+			folder.mkdir();
+			System.setProperty("webdriver.gecko.driver", projectDir + "/BrowserDrivers/geckodriver.exe");
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("geo.prompt.testing", true);
+			profile.setPreference("geo.prompt.testing.allow", true);
+			profile.setPreference("geo.enabled", true);
+			profile.setPreference("geo.provider.network.url",
+					"file://" + projectDir + "/src/main/resources/Property/geoLocation.json");
+			profile.setPreference("download.default_directory", folder.getAbsolutePath());
+			FirefoxOptions options = new FirefoxOptions();
+			options.setProfile(profile);
+			options.setAcceptInsecureCerts(true);
+			driver = new FirefoxDriver(options);
 			driver.manage().window().maximize();
 
 		}
@@ -448,4 +481,75 @@ public class GenericMethods {
 		String extendReportsPath = extentReportDir + className + timeStamp + ".html";
 		return extendReportsPath;
 	}
+
+	/**
+	 * This method is used to verify that Download directory is not empty and
+	 * downloaded files have size>0
+	 * 
+	 * @param logger
+	 */
+
+	public void verifyDownloadedFiles(ExtentTest logger) {
+		try {
+			// verify directory is not empty
+			File listOfFiles[] = folder.listFiles();
+			Assert.assertTrue(listOfFiles.length > 0);
+			logPass(logger, "Successfully downloaded files");
+
+			// verify downloaded file is not empty
+			for (File file : listOfFiles) {
+				Assert.assertTrue(file.length() > 0);
+				logPass(logger, "Verified files size is greater than zero");
+			}
+		} catch (Exception e) {
+
+			logFail(logger, "Issue with downloaded files");
+		}
+
+	}
+
+	public void enterText(WebDriver driver, ExtentTest logger, By elementLocator, String value, String objName) {
+		try {
+			WebElement elm = driver.findElement(elementLocator);
+			if ((elm != null)) {
+
+				elm.clear();
+				elm.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+				elm.sendKeys(value);
+				logPass(logger, "Successfully entered the text " + value + " in the field : " + objName, driver);
+			}
+
+			else
+				logFail(logger, "Element not found", driver);
+		} catch (ElementNotFoundException e) {
+			logFail(logger, "Element not found", driver);
+		} catch (InvalidElementStateException e) {
+			logFail(logger, "The webElement is non editable", driver);
+		} catch (Exception e) {
+			logFail(logger, "Other Exceptions : " + e.getMessage(), driver);
+		}
+	}
+
+	public void enterText(WebDriver driver, ExtentTest logger, WebElement element, String value, String objName) {
+		try {
+
+			if ((element != null)) {
+				element.clear();
+				if (value.isEmpty()) {
+					logInfo(logger, "Text which needs be entered in " + objName + " is empty");
+				} else {
+					element.sendKeys(value);
+					logInfo(logger, "Successfully entered the text " + value + " in the field :" + objName);
+				}
+			} else
+				logFail(logger, "Element not found", driver);
+		} catch (ElementNotFoundException e) {
+			logFail(logger, "Element not found", driver);
+		} catch (InvalidElementStateException e) {
+			logFail(logger, "The webElement is non editable", driver);
+		} catch (Exception e) {
+			logFail(logger, "Other Exceptions : " + e.getMessage(), driver);
+		}
+	}
+
 }

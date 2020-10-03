@@ -16,8 +16,12 @@ public class ProfilePageTests extends BaseClass {
 	@Test(description = "Click on Resume Button Test")
 	public void testResume() {
 		try {
+			driver.get(propertyFileUtils.getPropertyValue(logger, "Configuration", "URI2"));
+			gm.logInfo(logger, "Browser is launched", driver);
+
 			logger = extentReports.startTest("Start Click Button Resume Test");
 			myprofile.clickOnResumeButton(driver, logger);
+			gm.waitForMilliSec(2000);
 			extentReports.endTest(logger);
 
 		} catch (Throwable e) {
